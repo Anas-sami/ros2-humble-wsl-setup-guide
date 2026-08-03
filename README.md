@@ -1,42 +1,42 @@
 # ros2-humble-wsl-setup-guide
 A comprehensive guide and visual documentation for installing and configuring ROS 2 Humble on Windows using WSL 2. Created for Smart Methods  (AI Track ).
 
-# 🚀 ROS 2 Humble on WSL2 (Windows 11)
+# 🚀 ROS 2 Humble Setup Guide on Windows using WSL2
 
 <p align="center">
 
-![ROS2](https://img.shields.io/badge/ROS-2-blue?style=for-the-badge)
+![ROS2](https://img.shields.io/badge/ROS-2-22314E?style=for-the-badge)
 ![Ubuntu](https://img.shields.io/badge/Ubuntu-22.04-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)
-![WSL2](https://img.shields.io/badge/WSL2-Windows_11-0078D4?style=for-the-badge&logo=windows)
-![Linux](https://img.shields.io/badge/Linux-Ubuntu-FCC624?style=for-the-badge&logo=linux&logoColor=black)
+![Windows](https://img.shields.io/badge/Windows-11-0078D4?style=for-the-badge&logo=windows)
+![WSL2](https://img.shields.io/badge/WSL2-Linux-4EAA25?style=for-the-badge&logo=linux&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-success?style=for-the-badge)
 
 </p>
 
 ---
 
-# 📖 Overview
+## 📖 Overview
 
-This repository documents the complete process of installing **ROS 2 Humble Hawksbill** on **Windows 11** using **Windows Subsystem for Linux 2 (WSL2)**.
+This repository provides a complete guide to installing **ROS 2 Humble Hawksbill** on **Windows 11** using **Windows Subsystem for Linux 2 (WSL2)**.
 
-Instead of showing only the successful installation, this project also documents common installation problems, package dependency issues, repository configuration, troubleshooting techniques, and practical solutions encountered during the setup process.
+The project documents the complete installation journey, including system preparation, Ubuntu installation, package management, repository configuration, dependency troubleshooting, and solutions to common installation issues.
 
-The repository is intended to help robotics students, software engineers, AI developers, and Linux beginners install ROS 2 with confidence while understanding every step of the workflow.
+Unlike many tutorials that only demonstrate the successful outcome, this repository also documents real installation errors and explains how to resolve them.
 
 ---
 
 # ✨ Features
 
 - Complete WSL2 installation
-- Ubuntu installation on Windows
+- Ubuntu 22.04 installation
+- Windows PowerShell setup
 - ROS 2 repository configuration
-- Linux environment setup
-- Package management using APT
+- Linux package management
 - Dependency troubleshooting
 - Broken package recovery
-- Terminal command documentation
+- Environment configuration
 - Real installation screenshots
-- Beginner-friendly workflow
+- Beginner-friendly documentation
 
 ---
 
@@ -45,9 +45,9 @@ The repository is intended to help robotics students, software engineers, AI dev
 - Windows 11
 - Windows Subsystem for Linux (WSL2)
 - Ubuntu 22.04 LTS
-- ROS 2 Humble Hawksbill
-- PowerShell
+- ROS 2 Humble
 - Bash
+- PowerShell
 - APT Package Manager
 - Linux Terminal
 
@@ -55,10 +55,10 @@ The repository is intended to help robotics students, software engineers, AI dev
 
 # 📂 Repository Structure
 
-```
+```text
 .
 ├── README.md
-└── PNG for Linux
+└── png for linux
     ├── gid1.png
     ├── gid2.png
     ├── gid3.png
@@ -72,93 +72,91 @@ The repository is intended to help robotics students, software engineers, AI dev
 
 ---
 
-# 🚀 Installation Workflow
+# 🚀 Installation Process
 
-## Step 1 — Install WSL2
+## Step 1 — Enable WSL2
 
-Enable the required Windows components:
+Enable the required Windows features.
 
 - Virtual Machine Platform
 - Windows Subsystem for Linux
 
-These components provide the virtualization layer required to run Ubuntu on Windows.
+These components provide the virtualization environment required to run Linux on Windows.
 
 <p align="center">
-<img src="PNG%20for%20Linux/gid1.png" width="900">
+<img src="png%20for%20linux/gid1.png" width="900">
 </p>
 
 ---
 
 ## Step 2 — Install Windows Subsystem for Linux
 
-Windows installs WSL automatically before downloading Ubuntu.
+Windows automatically installs the WSL infrastructure before downloading Ubuntu.
 
 <p align="center">
-<img src="PNG%20for%20Linux/gid2.png" width="900">
+<img src="png%20for%20linux/gid2.png" width="900">
 </p>
 
 ---
 
 ## Step 3 — Install Ubuntu
 
-Ubuntu is downloaded and installed through the WSL installer.
+Ubuntu is downloaded and installed using the WSL installer.
 
-This Linux environment will host ROS 2 and all robotics development tools.
+After installation, Ubuntu becomes the primary Linux environment used for ROS 2 development.
 
 <p align="center">
-<img src="PNG%20for%20Linux/gid10.png" width="900">
+<img src="png%20for%20linux/gid10.png" width="900">
 </p>
 
 ---
 
-## Step 4 — Launch Ubuntu from PowerShell
+## Step 4 — Install Ubuntu from PowerShell
 
-Install Ubuntu directly using PowerShell.
+Run the following command:
 
 ```powershell
 wsl --install -d Ubuntu-22.04
 ```
 
 <p align="center">
-<img src="PNG%20for%20Linux/gid3.png" width="900">
+<img src="png%20for%20linux/gid3.png" width="900">
 </p>
 
 ---
 
 ## Step 5 — Update Ubuntu
 
-Update the operating system before installing ROS 2.
+Before installing ROS 2, update your operating system.
 
 ```bash
 sudo apt update
 sudo apt upgrade
 ```
 
-Updating packages helps avoid dependency conflicts during installation.
+Updating packages helps prevent dependency conflicts.
 
 <p align="center">
-<img src="PNG%20for%20Linux/gid9.png" width="900">
+<img src="png%20for%20linux/gid9.png" width="900">
 </p>
 
 ---
 
 ## Step 6 — Install Required Dependencies
 
-Install the packages required by ROS repositories.
-
-Example:
+Install the packages required before configuring the ROS repositories.
 
 ```bash
 sudo apt install software-properties-common curl
 ```
 
 <p align="center">
-<img src="PNG%20for%20Linux/gid7.png" width="900">
+<img src="png%20for%20linux/gid7.png" width="900">
 </p>
 
 ---
 
-## Step 7 — Configure the ROS Repository
+## Step 7 — Configure the ROS 2 Repository
 
 Add the official ROS repository and refresh the package list.
 
@@ -167,88 +165,144 @@ sudo apt update
 ```
 
 <p align="center">
-<img src="PNG%20for%20Linux/gid8.png" width="900">
+<img src="png%20for%20linux/gid8.png" width="900">
 </p>
 
 ---
 
 # ⚠ Troubleshooting
 
-Real installation problems are documented throughout this project.
-
-Understanding these issues is just as important as completing the installation.
+One objective of this repository is documenting common installation problems and their solutions.
 
 ---
 
 ## Broken Packages
 
-Dependency conflicts can occur when:
+Package conflicts may occur because of:
 
 - Incorrect Ubuntu version
 - Interrupted installation
-- Outdated repositories
 - Missing dependencies
 - Repository mismatch
+- Outdated package cache
 
 <p align="center">
-<img src="PNG%20for%20Linux/gid5.png" width="900">
+<img src="png%20for%20linux/gid5.png" width="900">
 </p>
 
 ---
 
 ## Missing setup.bash
 
-If you receive:
+If you receive the following error:
 
 ```text
 /opt/ros/humble/setup.bash: No such file or directory
 ```
 
-it usually means ROS 2 was not installed successfully.
+This usually indicates that ROS 2 has not been installed successfully.
 
 Verify the installation before sourcing the environment.
 
 <p align="center">
-<img src="PNG%20for%20Linux/gid6.png" width="900">
+<img src="png%20for%20linux/gid6.png" width="900">
 </p>
 
 ---
 
 # 📚 What You Will Learn
 
-After completing this guide you will understand how to:
+By following this guide, you will learn how to:
 
 - Install WSL2
-- Install Ubuntu
-- Configure Linux on Windows
-- Manage Linux packages
+- Install Ubuntu on Windows
+- Configure Linux
+- Manage packages using APT
 - Configure ROS repositories
 - Install ROS 2 Humble
-- Solve dependency issues
-- Recover from broken packages
+- Troubleshoot installation errors
+- Resolve dependency issues
 - Configure the ROS environment
-- Build a robotics development workspace
+- Prepare a robotics development workspace
 
 ---
 
 # 🎯 Target Audience
+
+This project is intended for:
 
 - Robotics Students
 - Software Engineering Students
 - Computer Science Students
 - Linux Beginners
 - ROS Beginners
-- AI Engineers
 - Robotics Developers
+- AI Engineers
 - Embedded Systems Engineers
 
 ---
 
 # 💡 Why This Repository?
 
-Most installation tutorials only demonstrate the ideal installation process.
+Most installation tutorials only show the successful installation process.
 
-This repository documents the complete journey, including real-world errors, troubleshooting techniques, and practical solutions, making it easier for others to reproduce a successful ROS 2 installation on Windows using WSL2.
+This repository documents the real installation experience, including common errors, troubleshooting procedures, and practical solutions, helping others build a reliable ROS 2 development environment with confidence.
+
+---
+
+# 📸 Installation Gallery
+
+## Enable WSL2
+
+<img src="png%20for%20linux/gid1.png">
+
+---
+
+## Install WSL
+
+<img src="png%20for%20linux/gid2.png">
+
+---
+
+## PowerShell Installation
+
+<img src="png%20for%20linux/gid3.png">
+
+---
+
+## Ubuntu Installation
+
+<img src="png%20for%20linux/gid10.png">
+
+---
+
+## Install Dependencies
+
+<img src="png%20for%20linux/gid7.png">
+
+---
+
+## Update Packages
+
+<img src="png%20for%20linux/gid9.png">
+
+---
+
+## Configure Repository
+
+<img src="png%20for%20linux/gid8.png">
+
+---
+
+## Broken Packages
+
+<img src="png%20for%20linux/gid5.png">
+
+---
+
+## Missing setup.bash
+
+<img src="png%20for%20linux/gid6.png">
 
 ---
 
